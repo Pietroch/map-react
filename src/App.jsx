@@ -19,12 +19,14 @@ const countryColors = {
 const App = () => {
 
   const layerStyle = {
-    id: 'admin-1-fill',
-    type: 'fill',
-    source: 'countries',
-    'source-layer': 'country_boundaries',
+    id: "countries-join",
+    type: "fill",
+    source: "countries",
+    "source-layer": "country_boundaries",
     paint: {
-      'fill-color': '#FF4136'
+      "fill-color": "#0080ff",
+      "fill-opacity": 0.3,
+      "fill-outline-color": "#ff0000"
     }
   }
 
@@ -51,8 +53,8 @@ const App = () => {
           type="vector"
           url="mapbox://mapbox.country-boundaries-v1">
           <Layer {...layerStyle}
+            beforeId="admin-1-boundary-bg"
           >
-
           </Layer>
         </Source>
       </ReactMapGL >
