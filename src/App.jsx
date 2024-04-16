@@ -1,65 +1,35 @@
-import * as React from 'react';
-import ReactMapGL, { FullscreenControl, GeolocateControl, NavigationControl, ScaleControl, Source, Layer } from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React, { useState } from 'react';
+import { SegmentedControl } from '@mantine/core';
+import AuthenticationForm from './Auth';
+import Map from './Map';
+import Map2 from './Map2';
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoicGlldHJvY2giLCJhIjoiY2xjaXgxeWM5MG85ODN2cXVnaXJ0dDRmdSJ9.VQJNdyNecuRNPEd44Nu4Dw';
-
-const data = {
-  origins: [
-    { country: { iso: 'FR' } },
-    { country: { iso: 'GB' } },
-  ],
-};
-
-const countryColors = {
-  FR: '#0074D9', // Blue for France
-  GB: '#FF4136', // Red for Great Britain
-};
+import './App.css'
 
 const App = () => {
+  const [activeModule, setActiveModule] = useState('Auth');
 
-  const layerStyle = {
-    id: "countries-join",
-    type: "fill",
-    source: "countries",
-    "source-layer": "country_boundaries",
-    paint: {
-      "fill-color": "#0080ff",
-      "fill-opacity": 0.3,
-      "fill-outline-color": "#ff0000"
-    }
-  }
+  const handleModuleChange = (value) => {
+    setActiveModule(value);
+  };
 
   return (
     <>
-      <h1>Map</h1>
-      <ReactMapGL
-        mapboxAccessToken={MAPBOX_TOKEN}
-        initialViewState={{
-          longitude: 20,
-          latitude: 50,
-          zoom: 2
-        }}
-        mapStyle="mapbox://styles/mapbox/light-v11"
-        projection="mercator"
-        style={{ width: '1000px', height: '500px' }}
-      >
-        <FullscreenControl />
-        <GeolocateControl />
-        <NavigationControl />
-        <ScaleControl />
-        <Source
-          id="admin-1"
-          type="vector"
-          url="mapbox://mapbox.country-boundaries-v1">
-          <Layer {...layerStyle}
-            beforeId="admin-1-boundary-bg"
-          >
-          </Layer>
-        </Source>
-      </ReactMapGL >
+      <h1>Bienvenue sur mon application !</h1>
+      <div className="header">
+        <SegmentedControl
+          data={['Auth', 'Map', 'Map2']}
+          value={activeModule}
+          onChange={handleModuleChange}
+        />
+      </div>
+      <div className="container">
+        {activeModule === 'Auth' && <AuthenticationForm />}
+        {activeModule === 'Map' && <Map />}
+        {activeModule === 'Map2' && <Map2 />}
+      </div>
     </>
   );
-}
+};
 
 export default App;

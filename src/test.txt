@@ -1,0 +1,29 @@
+Noxos
+
+Authentification Form :
+
+https://ui.mantine.dev/component/authentication-form/
+
+https://ui.mantine.dev/component/forgot-password/
+
+https://ui.mantine.dev/component/password-strength/
+
+
+
+
+Map :
+
+Slider
+
+
+Filter :
+
+Sosa : Radio
+
+Name & First Name : Input
+
+
+
+
+
+
