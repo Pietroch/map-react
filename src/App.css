@@ -1,13 +1,11 @@
 .container {
   position: absolute; /* Utiliser position: absolute pour fixer le conteneur */
-  top: 60px; /* Définir la position du haut du conteneur sous le header */
   left: 0; /* Définir la position de gauche du conteneur à 0 */
   right: 0; /* Définir la position de droite du conteneur à 0 */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 60px); /* Définir la hauteur du conteneur pour qu'il prenne tout l'espace restant sous le header */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
